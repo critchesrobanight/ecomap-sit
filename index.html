@@ -59,3 +59,56 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>EcoMap</title>
+
+  <!-- Подключаем Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f4f4;
+      color: #333;
+    }
+    #map {
+      height: 90vh; /* 90% высоты экрана */
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <h1>EcoMap</h1>
+  </header>
+
+  <section class="map-section">
+    <div id="map"></div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 EcoMap</p>
+  </footer>
+
+  <script>
+    // Инициализация карты
+    var map = L.map('map').setView([43.2389, 76.8897], 12); // Алматы
+
+    // Подключаем слой OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data © OpenStreetMap contributors',
+    }).addTo(map);
+
+    // Пример маркера
+    L.marker([43.2389, 76.8897]).addTo(map)
+      .bindPopup('Пункт переработки отходов №1')
+      .openPopup();
+  </script>
+</body>
+</html>
