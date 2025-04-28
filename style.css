@@ -1,0 +1,160 @@
+/* Общие стили */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0fdf4;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Шапка */
+.header {
+  background-color: #2e7d32;
+  padding: 20px 0;
+}
+
+.logo {
+  color: #fff;
+  margin: 0;
+  font-size: 28px;
+}
+
+.nav {
+  margin-top: 10px;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 600;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* Герой секция */
+.hero {
+  background: url('https://images.unsplash.com/photo-1592201458350-62fce2b1d9b3?auto=format&fit=crop&w=1470&q=80') no-repeat center/cover;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h2 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.btn {
+  background-color: #66bb6a;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #43a047;
+}
+
+/* Особенности (features) */
+.features {
+  background-color: #e8f5e9;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.feature-card {
+  display: inline-block;
+  width: 280px;
+  margin: 20px;
+  padding: 30px 20px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+.feature-card img {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  margin-bottom: 15px;
+  color: #2e7d32;
+}
+
+/* Футер */
+.footer {
+  background-color: #2e7d32;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 50px;
+}
+.map-section {
+  background-color: #f0fdf4;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.map-section h2 {
+  font-size: 2.5em;
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+.map-section p {
+  font-size: 1.1em;
+  margin-bottom: 40px;
+}
+
+.map-container {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  overflow: hidden;
+}
+.contact-section {
+  background-color: #e8f5e9;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 15px;
+  border: 2px solid #c8e6c9;
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+.contact-form button {
+  align-self: center;
+}
