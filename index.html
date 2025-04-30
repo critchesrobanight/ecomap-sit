@@ -1,139 +1,53 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EcoMap — сортируй с умом</title>
+  <meta charset="UTF-8">
+  <title>EcoMap</title>
 
-  <!-- Стили Leaflet для карты -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Подключаем Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f3f3f3;
-    }
-
-    header {
-      background-color: #4CAF50;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    main {
-      padding: 20px;
-    }
-
-    section {
-      margin-bottom: 40px;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    h1, h2 {
-      margin-top: 0;
-    }
-
-    #map {
-      height: 400px;
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .gamify {
-      font-size: 18px;
-    }
-
-    button {
-      padding: 10px 15px;
-      font-size: 16px;
-      border: none;
-      background-color: #4CAF50;
-      color: white;
-      cursor: pointer;
-      border-radius: 5px;
-      margin-top: 10px;
-    }
-
-    button:hover {
-      background-color: #45a049;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #eee;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f4f4;
       color: #333;
+    }
+    #map {
+      height: 90vh; /* 90% высоты экрана */
+      width: 100%;
     }
   </style>
 </head>
+
 <body>
-  <header>
+  <header class="header">
     <h1>EcoMap</h1>
-    <p>Помогаем сортировать отходы и заботиться об экологии</p>
   </header>
 
-  <main>
-    <section class="intro">
-      <h2>О проекте</h2>
-      <p>EcoMap — это карта и геймифицированное приложение, которое помогает людям находить пункты переработки отходов и получать баллы за вклад в экологию.</p>
-    </section>
+  <section class="map-section">
+    <div id="map"></div>
+  </section>
 
-    <section>
-      <h2>Карта пунктов переработки</h2>
-      <div id="map"></div>
-    </section>
-
-    <section>
-      <h2>Моя экологическая активность</h2>
-      <div class="gamify">
-        <div id="points-display">Очки: 0</div>
-        <div id="level-display">Уровень: Новичок</div>
-        <button onclick="addPoints(10)">Я сдал отходы!</button>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © 2025 EcoMap | Сделано с заботой о планете
+  <footer class="footer">
+    <p>© 2025 EcoMap</p>
   </footer>
 
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <!-- JS карта + геймификация -->
   <script>
-    // Карта
-    var map = L.map('map').setView([43.2389, 76.8897], 12); // Пример: Алматы
+    // Инициализация карты
+    var map = L.map('map').setView([43.2389, 76.8897], 12); // Алматы
 
+    // Подключаем слой OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap'
+      attribution: 'Map data © OpenStreetMap contributors',
     }).addTo(map);
 
-    // Пример точки переработки
+    // Пример маркера
     L.marker([43.2389, 76.8897]).addTo(map)
-      .bindPopup('Пункт переработки: Бумага и Пластик');
-
-    // Геймификация
-    let userPoints = 0;
-
-    function addPoints(points) {
-      userPoints += points;
-      document.getElementById("points-display").innerText = "Очки: " + userPoints;
-      checkLevel();
-    }
-
-    function checkLevel() {
-      let level = "Новичок";
-      if (userPoints >= 100) level = "Эко-Герой";
-      if (userPoints >= 250) level = "Сортировщик 80 уровня";
-
-      document.getElementById("level-display").innerText = "Уровень: " + level;
-    }
+      .bindPopup('Пункт переработки отходов №1')
+      .openPopup();
   </script>
 </body>
 </html>
