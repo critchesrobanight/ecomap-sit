@@ -1,83 +1,53 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>EcoMap</title>
 
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Подключаем Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
   <style>
     body {
-      font-family: sans-serif;
-      padding: 20px;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f4f4;
+      color: #333;
     }
     #map {
-      height: 400px;
-      margin-bottom: 20px;
-    }
-    .gamify {
-      font-size: 18px;
-      margin-top: 10px;
-    }
-    button {
-      padding: 10px 15px;
-      font-size: 16px;
-      border: none;
-      background-color: #4CAF50;
-      color: white;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    button:hover {
-      background-color: #45a049;
+      height: 90vh; /* 90% высоты экрана */
+      width: 100%;
     }
   </style>
 </head>
+
 <body>
-  <h1>EcoMap: Карта переработки</h1>
+  <header class="header">
+    <h1>EcoMap</h1>
+  </header>
 
-  <!-- Карта -->
-  <div id="map"></div>
+  <section class="map-section">
+    <div id="map"></div>
+  </section>
 
-  <!-- Геймификация -->
-  <div class="gamify">
-    <div id="points-display">Очки: 0</div>
-    <div id="level-display">Уровень: Новичок</div>
-    <button onclick="addPoints(10)">Я сдал отходы!</button>
-  </div>
+  <footer class="footer">
+    <p>© 2025 EcoMap</p>
+  </footer>
 
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     // Инициализация карты
-    var map = L.map('map').setView([43.2389, 76.8897], 12); // Пример: Алматы
+    var map = L.map('map').setView([43.2389, 76.8897], 12); // Алматы
 
+    // Подключаем слой OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap'
+      attribution: 'Map data © OpenStreetMap contributors',
     }).addTo(map);
 
     // Пример маркера
     L.marker([43.2389, 76.8897]).addTo(map)
-      .bindPopup('Пункт переработки: Бумага и Пластик');
-
-    // Геймификация
-    let userPoints = 0;
-
-    function addPoints(points) {
-      userPoints += points;
-      document.getElementById("points-display").innerText = "Очки: " + userPoints;
-
-      checkLevel();
-    }
-
-    function checkLevel() {
-      let level = "Новичок";
-      if (userPoints >= 100) level = "Эко-Герой";
-      if (userPoints >= 250) level = "Сортировщик 80 уровня";
-
-      document.getElementById("level-display").innerText = "Уровень: " + level;
-    }
+      .bindPopup('Пункт переработки отходов №1')
+      .openPopup();
   </script>
 </body>
 </html>
